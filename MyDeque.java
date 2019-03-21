@@ -18,8 +18,20 @@ public class MyDeque<E> {
   }
 
   public String toString(){
-    String output = "";
-    return output;
+    String output = "[";
+    if(start<=end){ 
+      for(int x = start; x < end; x++) {
+        output += data[x] + ", ";
+      }
+      return output + data[end] + "]";
+    }
+    for(int x = start; x < size; x++){ //from start to last element in list
+      output += data[x] + ", ";
+    }
+    for(int x = 0; x < end; x++){ //from 0th index to end
+      output += data[x] + ", ";
+    }
+    return output + data[end] + "]";
   }
 
   public void addFirst(E element){
