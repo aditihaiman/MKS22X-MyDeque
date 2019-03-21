@@ -6,11 +6,17 @@ public class MyDeque<E> {
 @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
+    size = 10;
+    start = 0;
+    end = 0;
   }
 
 @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
+    size = initialCapacity;
+    start = 0;
+    end = 0;
   }
 
   public int size(){
@@ -19,7 +25,7 @@ public class MyDeque<E> {
 
   public String toString(){
     String output = "[";
-    if(start<=end){ 
+    if(start<=end){
       for(int x = start; x < end; x++) {
         output += data[x] + ", ";
       }
@@ -57,7 +63,9 @@ public class MyDeque<E> {
   }
 
   public E removeLast(){
+    E temp = data[end];
 
+    return temp;
   }
 
   public E getFirst(){
