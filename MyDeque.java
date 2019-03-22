@@ -1,22 +1,24 @@
 public class MyDeque<E> {
 
   private E[] data;
-  private int size, start, end;
+  private int size, start, end, length;
 
 @SuppressWarnings("unchecked")
   public MyDeque(){
     data = (E[])new Object[10];
-    size = 10;
+    length = 10;
     start = 0;
     end = 0;
+    size = 0;
   }
 
 @SuppressWarnings("unchecked")
   public MyDeque(int initialCapacity){
     data = (E[])new Object[initialCapacity];
-    size = initialCapacity;
+    length = initialCapacity;
     start = 0;
     end = 0;
+    size = 0;
   }
 
   public int size(){
@@ -24,42 +26,52 @@ public class MyDeque<E> {
   }
 
   public String toString(){
+    if(size==0) return "[]";
     String output = "[";
     if(start<=end){
       for(int x = start; x < end; x++) {
-        output += data[x] + ", ";
+        if(data[x]!=null) output += data[x] + ", ";
       }
       return output + data[end] + "]";
     }
-    for(int x = start; x < size; x++){ //from start to last element in list
-      output += data[x] + ", ";
+    for(int x = start; x < length; x++){ //from start to last element in list
+      if(data[x]!=null) output += data[x] + ", ";
     }
-    for(int x = 0; x < end; x++){ //from 0th index to end
-      output += data[x] + ", ";
+    for(int y = 0; y < end; y++){ //from 0th index to end
+      if(data[y]!=null) output += data[y] + ", ";
     }
     return output + data[end] + "]";
   }
 
   public void addFirst(E element){
-    if(end==start-1 || (end==size-1 && start==0)) resize();
+    if(end==start-1 || (end==length-1 && start==0)) resize();
     if(end < start || start!= 0) {
       start--;
-      data[start] = element;
     }
     if(start==0) {
-      start = size-1;
-      data[start] = element;
+      start = length-1;
     }
+    data[start] = element;
+    size++;
   }
 
   public void addLast(E element){
-
+    if(end==start-1 || (end==length-1 && start==0)) resize();
+    if(end <= start) {
+      end++;
+    }
+    else {
+      if(end < length-1) end++;
+      if(end==length-1) end=0;
+    }
+    data[end] = element;
+    size++;
   }
 
   public E removeFirst(){
     E temp = data[start];
     if(start==end) data[start] = null;
-    else if(start==size-1){
+    else if(start==length-1){
       data[start] = null;
       start = 0;
     }
