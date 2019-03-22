@@ -41,11 +41,11 @@ public class MyDeque<E> {
   }
 
   public void addFirst(E element){
-
+    if(start<end && end == size-1) resize();
   }
 
   public void addLast(E element){
-
+    
   }
 
   public E removeFirst(){
@@ -74,6 +74,16 @@ public class MyDeque<E> {
 
   public E getLast(){
     return data[end];
+  }
+
+
+  private void resize() {
+    MyDeque newSize = new MyDeque(this.size*2+1);
+    // for(int x = 0; x < this.size; x++){
+    //   newSize.data[x] = this.data[x];
+    // }
+    // newSize.start = this.start;
+    // newSize.end = this.end;
   }
 
 
