@@ -60,13 +60,18 @@ public class MyDeque<E> {
 
   public void addLast(E element){
     if(element == null) throw new NullPointerException();
-    if(size==length) resize();
+    if(size==length) {
+      System.out.println("A");
+      resize();
+      System.out.println(Arrays.toString(data));
+    }
     if(size!=0) {
       if(end==length-1) end = 0;
       else end++;
     }
     data[end] = element;
     size++;
+
   }
 
   public E removeFirst(){
@@ -103,25 +108,30 @@ public class MyDeque<E> {
     return data[end];
   }
 
-
+  @SuppressWarnings("unchecked")
   private void resize() {
-    MyDeque newSize = new MyDeque(this.length*2+1);
+    E[] newSize = (E[])new Object[length*2+1];
     if(start==0){
-      for(int x = 0; x < newSize.length; x++){
-        newSize.data[x] = this.data[x];
+      System.out.println("B");
+      for(int x = 0; x < length; x++){
+        newSize[x] = data[x];
       }
+      //System.out.println(Arrays.toString(newSize));
     }
     else {
+      System.out.println("C");
       int idx = 0;
-      for(int x = this.start; x < this.length; x++){
-        newSize.data[idx] = this.data[x];
+      for(int x = start; x < length; x++){
+        newSize[idx] = data[x];
         idx++;
       }
-      for(int x = 0; x <= this.end; x++) {
-        newSize.data[idx] = this.data[x];
+      for(int x = 0; x <= end; x++) {
+        newSize[idx] = data[x];
         idx++;
       }
     }
+    length = length * 2 + 1;
+    data = newSize;
   }
 
 
