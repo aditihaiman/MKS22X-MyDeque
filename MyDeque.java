@@ -74,12 +74,8 @@ public class MyDeque<E> {
     E temp = data[start];
     data[start] = null;
     if(start!=end) {
-      if(start==length-1){
-        start = 0;
-      }
-      else {
-        start++;
-      }
+      if(start==length-1) start = 0;
+      else start++;
     }
     size--;
     return temp;
@@ -88,14 +84,10 @@ public class MyDeque<E> {
   public E removeLast(){
     if(size==0) throw new NoSuchElementException();
     E temp = data[end];
-    if(start==end) data[end] = null;
-    else if(end==0){
-      data[end] = null;
-      end = length - 1;
-    }
-    else {
-      data[end] = null;
-      end--;
+    data[end] = null;
+    if(start!=end) {
+      if(end==0) end = length - 1;
+      else end--;
     }
     size--;
     return temp;
