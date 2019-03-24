@@ -7,6 +7,14 @@ public class Driver {
     }
     System.out.println(test.getLast());
     System.out.println(test.toString());
+    System.out.println();
+
+    System.out.println(test.removeFirst());
+    System.out.println(test.toString());
+    System.out.println();
+    System.out.println(test.removeLast());
+    System.out.println(test.toString());
+
     //System.out.println(test.size());
 
   }
