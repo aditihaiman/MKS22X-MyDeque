@@ -60,11 +60,7 @@ public class MyDeque<E> {
 
   public void addLast(E element){
     if(element == null) throw new NullPointerException();
-    if(size==length) {
-      System.out.println("A");
-      resize();
-      System.out.println(Arrays.toString(data));
-    }
+    if(size==length) resize();
     if(size!=0) {
       if(end==length-1) end = 0;
       else end++;
@@ -112,14 +108,11 @@ public class MyDeque<E> {
   private void resize() {
     E[] newSize = (E[])new Object[length*2+1];
     if(start==0){
-      System.out.println("B");
       for(int x = 0; x < length; x++){
         newSize[x] = data[x];
       }
-      //System.out.println(Arrays.toString(newSize));
     }
     else {
-      System.out.println("C");
       int idx = 0;
       for(int x = start; x < length; x++){
         newSize[idx] = data[x];
@@ -130,6 +123,8 @@ public class MyDeque<E> {
         idx++;
       }
     }
+    start = 0;
+    end = size-1;
     length = length * 2 + 1;
     data = newSize;
   }
