@@ -44,25 +44,20 @@ public class MyDeque<E> {
   }
 
   public void addFirst(E element){
-    if(end==start-1 || (end==length-1 && start==0)) resize(); //replace with if(size==length)
-    if(end < start || start!= 0) {
-      start--;
-    }
-    if(start==0) {
-      start = length-1;
+    //if(size==length) resize(); //replace with if(size==length)
+    if(size!=0) {
+      if(start!=0) start--;
+      else start = length-1;
     }
     data[start] = element;
     size++;
   }
 
   public void addLast(E element){
-    if(end==start-1 || (end==length-1 && start==0)) resize();
-    if(end <= start) {
-      end++;
-    }
-    else {
-      if(end < length-1) end++;
-      if(end==length-1) end=0;
+    if(size==length) resize();
+    if(size!=0) {
+      if(end==length-1) end = 0;
+      else end++;
     }
     data[end] = element;
     size++;
@@ -106,11 +101,11 @@ public class MyDeque<E> {
     }
     else {
       int idx = 0;
-      for(int x = this.start; x < newSize.length; x++){
+      for(int x = this.start; x < this.length; x++){
         newSize.data[idx] = this.data[x];
         idx++;
       }
-      for(int x = 0; x < this.end; x++) {
+      for(int x = 0; x <= this.end; x++) {
         newSize.data[idx] = this.data[x];
         idx++;
       }
