@@ -27,7 +27,7 @@ public class Driver {
     System.out.println(Calculator.eval("8 2 + 99 9 - * 2 + 9 -")); //should print 893.0
     System.out.println(Calculator.eval("1 2 3 4 5 + * - -")); //should print 26.0
     System.out.println(Calculator.eval("3 2 + 5 * 6 12 / - 72.5 + 3 %")); //should print 1.0
-
+    System.out.println(Calculator.eval("5 1 2 + 4 * + 3 -")); //should print
 
 
   }
