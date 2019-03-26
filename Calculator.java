@@ -12,16 +12,16 @@ public class Calculator{
 
         try{
           calc.addLast(Double.parseDouble(data[x]));
-          System.out.println(calc);
+          //System.out.println(calc);
         }
         catch(NumberFormatException e){ //when the substring is an operation, not an integer
           if(data[x].equals("+")) {
             calc.addLast((double)(calc.removeLast()) + (double)calc.removeLast());
-            System.out.println(calc);
+            //System.out.println(calc);
           }
           if(data[x].equals("-")) {
             calc.addLast(-1 * (double)calc.removeLast() + (double)calc.removeLast());
-            System.out.println(calc);
+            //System.out.println(calc);
           }
           if(data[x].equals("*")) {
             calc.addLast((double)calc.removeLast() * (double)calc.removeLast());
