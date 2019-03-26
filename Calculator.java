@@ -12,32 +12,28 @@ public class Calculator{
 
         try{
           calc.addLast(Integer.parseInt(data[x]));
-
         }
-
-        catch(NumberFormatException e){
+        catch(NumberFormatException e){ //when the substring is an operation, not an integer
           if(data[x].equals("+")) {
-            calc.addLast(calc.removeLast() + calc.removeLast());
+            calc.addLast((Integer)(calc.removeLast()) + (Integer)calc.removeLast());
           }
           if(data[x].equals("-")) {
-            calc.addLast(-1 * calc.removeLast() + calc.removeLast());
+            calc.addLast(-1 * (Integer)calc.removeLast() + (Integer)calc.removeLast());
           }
           if(data[x].equals("*")) {
-            calc.addLast(calc.removeLast() * calc.removeLast());
+            calc.addLast((Integer)calc.removeLast() * (Integer)calc.removeLast());
           }
           if(data[x].equals("/")) {
-            calc.addLast(1/calc.removeLast() * calc.removeLast());
+            calc.addLast(1/(Integer)calc.removeLast() * (Integer)calc.removeLast());
           }
           if(data[x].equals("%")) {
-            calc.addLast(calc.removeLast() + calc.removeLast());
+            Integer temp = (Integer)calc.removeLast();
+            calc.addLast((Integer)calc.removeLast() % temp);
           }
 
         }
-
-
-
       }
 
-      return 0;
+      return (double)calc.getLast();
     }
 }
