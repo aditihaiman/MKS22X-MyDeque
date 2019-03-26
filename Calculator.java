@@ -11,24 +11,27 @@ public class Calculator{
       for(int x = 0; x < data.length; x++) {
 
         try{
-          calc.addLast(Integer.parseInt(data[x]));
+          calc.addLast(Double.parseDouble(data[x]));
+          System.out.println(calc);
         }
         catch(NumberFormatException e){ //when the substring is an operation, not an integer
           if(data[x].equals("+")) {
-            calc.addLast((Integer)(calc.removeLast()) + (Integer)calc.removeLast());
+            calc.addLast((double)(calc.removeLast()) + (double)calc.removeLast());
+            System.out.println(calc);
           }
           if(data[x].equals("-")) {
-            calc.addLast(-1 * (Integer)calc.removeLast() + (Integer)calc.removeLast());
+            calc.addLast(-1 * (double)calc.removeLast() + (double)calc.removeLast());
+            System.out.println(calc);
           }
           if(data[x].equals("*")) {
-            calc.addLast((Integer)calc.removeLast() * (Integer)calc.removeLast());
+            calc.addLast((double)calc.removeLast() * (double)calc.removeLast());
           }
           if(data[x].equals("/")) {
-            calc.addLast(1/(Integer)calc.removeLast() * (Integer)calc.removeLast());
+            calc.addLast(1/(double)calc.removeLast() * (double)calc.removeLast());
           }
           if(data[x].equals("%")) {
-            Integer temp = (Integer)calc.removeLast();
-            calc.addLast((Integer)calc.removeLast() % temp);
+            Double temp = (double)calc.removeLast();
+            calc.addLast((double)calc.removeLast() % temp);
           }
 
         }

@@ -8,6 +8,7 @@ public class Driver {
     System.out.println(test);
     System.out.println();
 
+    Integer x = 5;
 
     //System.out.println(test);
 
@@ -21,7 +22,7 @@ public class Driver {
     System.out.println("------------------------------");
 
     String s = "11 3 - 4 + 2.5 *";
-    Calculator.eval(s);
+    System.out.println(Calculator.eval(s));
 
 
 
